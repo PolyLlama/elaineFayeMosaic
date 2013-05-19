@@ -9,15 +9,9 @@ var express = require('express')
   , images = require('./routes/images')
   , http = require('http')
   , url = require('url')
-  , path = require('path')
-  , mongoose = require('mongoose');
-
-//connect to db
-mongoose.connect('mongodb://localhost/test');
+  , path = require('path');
 
 var app = express();
-var db = mongoose.connection;
-
 
 // all environments
 app.set('port', process.env.PORT || 3000);
