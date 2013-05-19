@@ -6,6 +6,7 @@
     "start": "node app.js"
   },
   "dependencies": {
+    "socket.io": "latest",
     "express": "3.2.2",
     "jade": "*"
   },
@@ -13,7 +14,8 @@
     "grunt": "~0.4.1",
     "grunt-contrib-sass": "~0.3.0",
     "grunt-contrib-handlebars": "~0.5.8",
-    "grunt-contrib-watch": "~0.4.0"
+    "grunt-contrib-watch": "~0.4.0",
+    "mongoose":"*"
   },
   "subdomain": "elainemosaic",
   "engines": {
