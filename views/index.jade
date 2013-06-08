@@ -1,5 +1,9 @@
 extends layout
 
 block content
-  h1= title
-  p Elaine Faye Mosaic
+    h1 Realtime instagram
+
+block scripts
+    script(src='/socket.io/socket.io.js')
+    script(src='/javascripts/libs/jquery.js')
+    script(src='/javascripts/testsockets.js')

@@ -6,12 +6,13 @@
 var express = require('express')
   , routes = require('./routes')
   , user = require('./routes/user')
-  , images = require('./routes/images')
   , http = require('http')
   , url = require('url')
   , path = require('path');
+  
 
 var app = express();
+
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -29,31 +30,13 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-
+var images = require('./routes/images');
+//routes
 app.get('/', routes.index);
 app.get('/users', user.list);
-app.get('/image_subscription', images.subscription)
+app.get('/image_subscription', images.subscription);
+app.post('/image_subscription', images.notification);
 
-http.createServer(app).listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
-});
+var io = require('socket.io').listen(app.listen(app.get('port')));
 
-
-/*
-var app = require('express')()
-  , server = require('http').createServer(app)
-  , io = require('socket.io').listen(server);
-
-server.listen(3000);
-
-app.get('/', function (req, res) {
-  res.sendfile(__dirname + '/index.html');
-});
-
-io.sockets.on('connection', function (socket) {
-  socket.emit('news', { hello: 'world' });
-  socket.on('my other event', function (data) {
-    console.log(data);
-  });
-});
-*/
+exports.io = io;
