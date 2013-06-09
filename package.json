@@ -1,6 +1,6 @@
 {
   "name": "application-name",
-  "version": "0.0.1-22",
+  "version": "0.0.1-27",
   "private": true,
   "scripts": {
     "start": "node app.js"
@@ -10,7 +10,9 @@
     "jade": "*",
     "request": "*",
     "mongoose": "*",
-    "socket.io": "*"
+    "socket.io": "*",
+    "mongodb": "*",
+    "underscore": "*"
   },
   "devDependencies": {
     "grunt": "~0.4.1",

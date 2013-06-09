@@ -13,6 +13,8 @@ var express = require('express')
 
 var app = express();
 
+//db connection string
+process.env.MONGOHQ_URL = "mongodb://polyllama:3181llamas!@dharma.mongohq.com:10013/elainemosaic";
 
 // all environments
 app.set('port', process.env.PORT || 3000);

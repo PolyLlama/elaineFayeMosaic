@@ -3,25 +3,25 @@ var url = require('url')
   , fs = require('fs')
   , request = require('request')
   , mongoose = require('mongoose')
-  , io = require('../app.js');
-
-// set up db connection
-//mongoose.connect('mongodb://polyllama:3181llamas!@dharma.mongohq.com:10013/elainemosaic');
-//var db = mongoose.connection;
-//db.on('error', console.error.bind(console, 'connection error:'));
-
-// image schemas
-//var imageSchema = mongoose.Schema({
-
-//});
+  , io = require('../app.js')
+  , tileCollection = require('../tilecollection.js');
 
 var DOWNLOAD_DIRECTORY = './public/mosaic_images/standard_resolution/';
 var REQUEST_DIRECTORY = '/mosaic_images/standard_resolution/'
 
 var parseImageData = function(imageData){
+  console.log(imageData);
   var imageSrc = imageData.images.standard_resolution.url
     , imageFileName = imageSrc.split('/').pop()
-    , callback = function(){io.io.sockets.emit('message', REQUEST_DIRECTORY + imageFileName)};
+    , callback
+    , localImageSource;
+
+  // override the instagram image sources with our local image source
+  localImageSource = imageData.images.standard_resolution.url = REQUEST_DIRECTORY + imageFileName;  
+
+  callback = function(){
+        tileCollection.add(imageData, function(){io.io.sockets.emit('message', localImageSource)});
+  };
   
   download(imageSrc, imageFileName, callback);
 }
