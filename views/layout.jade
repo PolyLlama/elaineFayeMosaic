@@ -17,9 +17,7 @@ html(class='no-js')
 		meta(name='description', content='')
 		meta(name='viewport', content='width=device-width')
 
-		link(rel='stylesheet', href='/css/normalize.css')
 		link(rel='stylesheet', href='/css/main.css')
-		link(rel='stylesheet', href='/stylesheets/style.css')
 		script(src='/js/vendor/modernizr-2.6.2.min.js')
 
 	body
@@ -30,18 +28,18 @@ html(class='no-js')
 			<a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a>
 			to improve your experience.
 
-		p Hello world!
-
 		block content
 		block scripts
 
-		script(src='//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')
-		script window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\\/script>')
-		script(src='js/plugins.js')
-		script(src='js/main.js')
+		script(src='//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js')
+		script window.jQuery || document.write('<script src="/js/vendor/jquery-latest.js"><\\/script>')
 
-		script
-			var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-			(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-			g.src='//www.google-analytics.com/ga.js';
-			s.parentNode.insertBefore(g,s)}(document,'script'));
+		//- //- We're not using these below...yet.
+		//- script(src='/js/plugins.js')
+		//- script(src='/js/main.js')
+
+		//- script
+		//- 	var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+		//- 	(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+		//- 	g.src='//www.google-analytics.com/ga.js';
+		//- 	s.parentNode.insertBefore(g,s)}(document,'script'));

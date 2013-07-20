@@ -1,0 +1,13 @@
+@mixin display {
+	font: {
+		family: sans-serif;
+		weight: normal;
+		size: 72px;
+	}
+}
+
+h1 {
+	@include display;
+	line-height: 1;
+}
+

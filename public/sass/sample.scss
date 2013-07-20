@@ -1,0 +1,64 @@
+// Sass supports variables (declared with the $)...
+$blue: #3bbfce;
+$margin: 16px;
+
+.content-navigation {
+	border-color: $blue;
+	color:
+		darken($blue, 9%);
+}
+// ....as well as basic math operations
+.border {
+	padding: $margin / 2;
+	margin: $margin / 2;
+	border-color: $blue;
+}
+
+// Nesting works not only for elements...
+table.hl {
+	margin: 2em 0;
+	td.ln {
+		text-align: right;
+	}
+}
+// ...but also properties
+li {
+	font: {
+		family: serif;
+		weight: bold;
+		size: 1.2em;
+	}
+}
+
+// Mixins allow you to re-use whole chunks of CSS, properties or selectors...
+@mixin table-base {
+	th {
+		text-align: center;
+		font-weight: bold;
+	}
+	td, th {padding: 2px}
+}
+// ...You can even give them arguments.
+@mixin left($dist) {
+	float: left;
+	margin-left: $dist;
+}
+#data {
+	@include left(10px);
+	@include table-base;
+}
+
+// Sass can tell one selector to inherit all the styles of another without duplicating the CSS properties.
+.error {
+	border: 1px #f00;
+	background: #fdd;
+}
+.error.intrusion {
+	font-size: 1.3em;
+	font-weight: bold;
+}
+
+.badError {
+	@extend .error;
+	border-width: 3px;
+}
